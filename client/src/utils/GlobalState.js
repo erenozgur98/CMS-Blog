@@ -4,7 +4,8 @@ import React, { createContext, useReducer, useContext } from "react";
 const BlogContext = createContext({
   id: "",
   name: ""
-})
+});
+const { Provider } = BlogContext;
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -30,7 +31,7 @@ const reducer = (state, action) => {
 const StoreProvider = ({ value = [], ...props }) => {
   const [state, dispatch] = useReducer(reducer, {});
 
-  return "PROVIDER ELEMENT HERE";
+  return <Provider value={[state, dispatch]} {...props} />;
 };
 
 const useStoreContext = () => {
