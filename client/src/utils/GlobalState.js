@@ -19,6 +19,7 @@ const reducer = (state, action) => {
     ]
   case "ADD_POST":
     return [
+      ...state,
       {
         id: state.length * Math.random(),
         name: action.name
