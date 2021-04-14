@@ -10,11 +10,24 @@ const { Provider } = BlogContext;
 const reducer = (state, action) => {
   switch (action.type) {
   case "UPDATE_POSTS":
-    return 
+    return [
+      ...state,
+      {
+        id: action.id,
+        name: action.name
+      }
+    ]
   case "ADD_POST":
-    return
+    return [
+      {
+        id: state.length * Math.random(),
+        name: action.name
+      }
+    ]
   case "REMOVE_POST":
-    return
+    return state.filter((_, index) => {
+      return index !== action.index
+    })
   case "SET_CURRENT_POST":
     return {
       ...state,
